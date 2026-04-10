@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shivi ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#ff9a9e,#fad0c4);overflow-x:hidden}
+header{padding:25px;font-size:30px;font-weight:700;color:#fff;text-align:center}
+.container{display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
+button{padding:15px 25px;border-radius:25px;border:none;background:#fff;color:#ff4d6d;font-weight:500;cursor:pointer;transition:.3s}
+button:hover{transform:scale(1.1);background:#ff4d6d;color:#fff}
+.section{display:none;padding:20px;animation:fade .5s ease;text-align:center}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* Premium Gallery */
+.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
+.gallery img{
+  width:220px;
+  height:270px;
+  object-fit:cover;
+  border-radius:20px;
+  cursor:pointer;
+  transition:.4s;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+.gallery img:hover{
+  transform:scale(1.1) rotate(1deg);
+}
+
+/* Fullscreen Viewer */
+#viewer{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+#viewer img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:20px;
+}
+
+input{padding:10px;margin:5px;border-radius:10px;border:none}
+
+.heart{position:fixed;color:red;animation:float 5s linear infinite}
+@keyframes float{from{transform:translateY(100vh)}to{transform:translateY(-10vh)}}
+
+#letterText{max-width:700px;margin:auto;font-size:16px;line-height:1.6;background:rgba(255,255,255,0.7);padding:20px;border-radius:20px}
+.hiddenMsg{display:none;color:#ff4d6d;font-weight:500;margin-top:10px}
+</style>
+</head>
+<body>
+
+<header>For Shivi Verma ❤️</header>
+
+<div class="container">
+<button onclick="show('memories')">Memories 📸</button>
+<button onclick="show('quiz')">Fun Quiz 🎯</button>
+<button onclick="show('songs')">Songs 🎶</button>
+<button onclick="show('letter');startTyping()">Love Letter 💌</button>
+<button onclick="show('game')">Mini Game 🎮</button>
+</div>
+
+<!-- PREMIUM MEMORIES -->
+<div class="gallery">
+  <img src="img.jpg.jpeg" onclick="openViewer(this.src)">
+  <img src="img2.jpg.jpeg" onclick="openViewer(this.src)">
+  <img src="img3.jpg.jpeg" onclick="openViewer(this.src)">
+  <img src="img4.jpg.jpeg" onclick="openViewer(this.src)">
+  <img src="img5.jpg.jpeg" onclick="openViewer(this.src)">
+</div>
+</div>
+
+<!-- FULLSCREEN VIEWER -->
+<div id="viewer" onclick="closeViewer()">
+<img id="viewerImg">
+</div>
+
+<div id="quiz" class="section">
+<h2>How well do you know me? 😏</h2>
+<p>If we were in a movie together, what kind of movie would it be? 🎬</p>
+<input placeholder="Type your answer">
+<p>What’s one silly thing I do that secretly makes you smile? 😄</p>
+<input placeholder="Type your answer">
+<p>If we could go anywhere right now, where would you take me? ✈️</p>
+<input placeholder="Type your answer">
+<p>What nickname would you give me if you had to pick a funny one? 😂</p>
+<input placeholder="Type your answer">
+<p>If you could relive one moment with me again, which one would you choose?</p>
+<input placeholder="Type your answer">
+</div>
+
+<div id="songs" class="section">
+<h2>Songs for You 🎶</h2>
+<audio controls autoplay loop src="WhatsApp Audio 2026-04-10 at 22.47.15.mpeg"></audio><br>
+<audio controls src="WhatsApp Audio 2026-04-10 at 22.47.16 (1).mpeg"></audio><br>
+<audio controls src="WhatsApp Audio 2026-04-10 at 22.47.16.mpeg"></audio>
+</div>
+
+<div id="letter" class="section">
+<h2>My Love Letter 💌</h2>
+<div id="letterText"></div>
+</div>
+
+<div id="game" class="section">
+<h2>Catch My Love ❤️</h2>
+<p>Click the moving heart!</p>
+<button id="heartBtn">❤️</button>
+<p class="hiddenMsg" id="msg1">You are my favorite person ❤️</p>
+<p class="hiddenMsg" id="msg2">I choose you, always ❤️</p>
+</div>
+
+<script>
+function show(id){document.querySelectorAll('.section').forEach(s=>s.style.display='none');document.getElementById(id).style.display='block'}
+
+// floating hearts
+setInterval(()=>{let h=document.createElement('div');h.className='heart';h.style.left=Math.random()*100+'vw';h.innerText='❤️';document.body.appendChild(h);setTimeout(()=>h.remove(),5000)},500)
+
+// viewer
+function openViewer(src){document.getElementById('viewer').style.display='flex';document.getElementById('viewerImg').src=src}
+function closeViewer(){document.getElementById('viewer').style.display='none'}
+
+// game
+const btn=document.getElementById('heartBtn');
+btn.onclick=()=>{alert('I love you Shivi ❤️');document.getElementById('msg1').style.display='block';document.getElementById('msg2').style.display='block'}
+btn.onmouseover=()=>{btn.style.position='absolute';btn.style.top=Math.random()*300+'px';btn.style.left=Math.random()*300+'px'}
+
+// typing
+const text=`My love,\n\nI don’t even know where to begin, because every time I try to put my feelings into words, they somehow feel smaller than what I actually feel for you. You are not just a part of my life—you are the best part of it. The way you smile, the way you talk, even the little things you don’t notice about yourself… they all mean so much to me.\n\nBeing with you feels like home. No matter how my day goes, just thinking about you makes everything lighter and better. You have this beautiful way of making ordinary moments feel special, and I honestly don’t know what I did to deserve someone as amazing as you.\n\nI love the way you understand me, even when I can’t explain myself properly. I love how you support me, make me laugh, and somehow manage to turn my worst moods into smiles. You’re not just my girlfriend—you’re my best friend, my comfort, and my happiness all in one.\n\nSometimes I wish I could pause time in the moments we spend together, just so I could stay there a little longer. Every memory with you is something I hold close to my heart, and I can’t wait to make a thousand more with you.\n\nI may not always say it perfectly, but I hope you always know this—I love you more than words can ever fully express. And no matter what happens, I’ll always be here, caring for you, supporting you, and loving you with all my heart.\n\nYours, always.`;
+let i=0;
+function startTyping(){const el=document.getElementById('letterText');el.innerHTML='';i=0;function type(){if(i<text.length){el.innerHTML+=text.charAt(i)==='\n'?'<br>':text.charAt(i);i++;setTimeout(type,25)}}type()}
+</script>
+
+</body>
+</html>
+
+
+
