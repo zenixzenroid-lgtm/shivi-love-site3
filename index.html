@@ -68,13 +68,116 @@ input{padding:10px;margin:5px;border-radius:10px;border:none}
 </div>
 
 <!-- PREMIUM MEMORIES -->
+<div id="memories" class="section">
+<h2>Our Memories ❤️</h2>
+
 <div class="gallery">
-  <img src="img.jpg" onclick="openViewer(this.src)">
-  <img src="img2.jpg" onclick="openViewer(this.src)">
-  <img src="img3.jpg" onclick="openViewer(this.src)">
-  <img src="img4.jpg" onclick="openViewer(this.src)">
-  <img src="img5.jpg" onclick="openViewer(this.src)">
+  <img src="img.jpg" onclick="openLightbox(this.src)">
+  <img src="img2.jpg" onclick="openLightbox(this.src)">
+  <img src="img3.jpg" onclick="openLightbox(this.src)">
+  <img src="img4.jpg" onclick="openLightbox(this.src)">
+  <img src="img5.jpg" onclick="openLightbox(this.src)">
 </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg">
+</div>
+
+<style>
+.gallery{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+}
+
+.gallery img{
+  width:220px;
+  height:280px;
+  object-fit:cover;
+  border-radius:20px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.1);
+}
+
+
+#lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+#lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:20px;
+}
+</style>
+
+<script>
+function openLightbox(src){
+  document.getElementById('lightbox').style.display='flex';
+  document.getElementById('lightboxImg').src=src;
+}
+
+function closeLightbox(){
+  document.getElementById('lightbox').style.display='none';
+}
+</script>
+
+<!-- BONUS: AUTO SLIDESHOW (OPTIONAL ADD ANYWHERE) -->
+<div class="slideshow">
+  <img id="slideImg">
+</div>
+
+<style>
+.slideshow{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+}
+
+.slideshow img{
+  width:300px;
+  height:380px;
+  object-fit:cover;
+  border-radius:20px;
+}
+</style>
+
+<script>
+const slides=[
+"img.jpg",
+"img2.jpg",
+"img3.jpg",
+"img5.jpg",
+"img5.jpg"
+];
+
+let index=0;
+setInterval(()=>{
+  const img=document.getElementById('slideImg');
+  if(img){
+    img.src=slides[index];
+    index=(index+1)%slides.length;
+  }
+},2000);
+</script>
+
 </div>
 
 <!-- FULLSCREEN VIEWER -->
